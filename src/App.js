@@ -1,42 +1,42 @@
 import "./App.css";
 import React, { useState } from "react";
 
-var updatedCourse = {};
-//define the mock data with keys
+const data = [
+  {
+    id: 0,
+    name: "Full Stack Developement Program",
+    price: "89,999",
+  },
 
-window.addEventListener("flutterInAppWebViewPlatformReady", function (event) {
-  console.log("added"); // never printed
-  window.flutter_inappwebview.callHandler("eventHandler").then((result) => {
-    updatedCourse = result
-    alert(updatedCourse)
-    alert(JSON.stringify(result));
-  });
-});
+  {
+    id: 1,
+    name: "Python Automation Testing Program",
+    price: "64,999",
+  },
 
-var App = () => {
-  const data = [
-    {
-      id: 0,
-      name: "Full Stack Developement Program",
-      price: "89,999",
-    },
+  {
+    id: 2,
+    name: "UI/UX Program",
+    price: "89,999",
+  },
+];
 
-    {
-      id: 1,
-      name: "Python Automation Testing Program",
-      price: "64,999",
-    },
 
-    {
-      id: 2,
-      name: "UI/UX Program",
-      price: "89,999",
-    },
-  ];
+
+
+export default function App() {
 
   const [courses, setCourses] = useState(data);
 
-  setCourses(...courses,updatedCourse)
+  window.addEventListener("flutterInAppWebViewPlatformReady", function (event) {
+    console.log("added"); // never printed
+    window.flutter_inappwebview.callHandler("eventHandler").then((result) => {
+      setCourses( current => [...current, result])
+      alert(JSON.stringify(result));
+    });
+  });
+
+  console.log('courses',courses)
 
   const arrayDataItems = courses.map((course, index) => (
     <li key={index}>
@@ -56,5 +56,3 @@ var App = () => {
     </div>
   );
 };
-
-export default App;
