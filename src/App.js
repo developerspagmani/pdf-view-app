@@ -25,6 +25,13 @@ const courses = [
 
 ]
 
+window.addEventListener("flutterInAppWebViewPlatformReady", function(event) {
+  console.log('added'); // never printed
+  window.flutter_inappwebview.callHandler('eventHandler', 'hello', 'world').then(function(result) {
+      console.log('finished');
+  });
+});
+
 var App = () => {
 
   /* Mapping the courses into a new array of JSX nodes as arrayDataItems */
