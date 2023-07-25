@@ -1,23 +1,49 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import React from "react";
 
-function App() {
+//define the mock data with keys
+const courses = [
+
+  {
+    id: 0,
+    name: 'Full Stack Developement Program',
+    price: '89,999'
+  },
+
+  {
+
+    id: 1,
+    name: 'Python Automation Testing Program',
+    price: '64,999'
+  },
+
+  {
+    id: 2,
+    name: 'UI/UX Program',
+    price: '89,999'
+  }
+
+]
+
+var App = () => {
+
+  /* Mapping the courses into a new array of JSX nodes as arrayDataItems */
+
+  const arrayDataItems = courses.map((course,index) => 
+    <li key={index}>
+      <p>{course.name}</p>
+      <span>{course.price}</span>
+    </li>
+  )
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <div>
+        <h1>Course List</h1>
+      </div>
+
+      {/* returning arrayDataItems wrapped in <ul> */}
+      <ul>{arrayDataItems}</ul>
     </div>
   );
 }
