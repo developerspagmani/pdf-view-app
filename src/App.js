@@ -28,7 +28,9 @@ const courses = [
 window.addEventListener("flutterInAppWebViewPlatformReady", function(event) {
   console.log('added'); // never printed
   window.flutter_inappwebview.callHandler('eventHandler', 'hello', 'world').then(function(result) {
-      console.log('finished');
+    courses.push({id: 3,
+      name: 'UI/UX Program',
+      price: '89,999'})
   });
 });
 
