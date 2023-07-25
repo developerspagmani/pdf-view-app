@@ -27,9 +27,9 @@ const courses = [
 
 window.addEventListener("flutterInAppWebViewPlatformReady", function(event) {
   console.log('added'); // never printed
-  window.flutter_inappwebview.callHandler('eventHandler', 'hello', 'world').then(function(result) {
-    
-    alert(result)
+  window.flutter_inappwebview.callHandler('eventHandler').then((result) => {
+      courses.push(result)
+      alert(courses)
   });
 });
 
